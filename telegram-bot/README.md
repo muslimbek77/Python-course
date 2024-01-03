@@ -78,7 +78,9 @@ MA'LUMOTLAR OMBORI. POSTGRESQL
 9.3 Handlers
 9.4 PyCharm Professional
 
+
 Matnli qo'llanma: AIOgram frameworkida yozilgan telegram botni railway.app saytiga tekinga joylash (https://telegra.ph/AIOgram-frameworkida-yozilgan-telegram-botni-railwayapp-saytiga-tekinga-joylash-12-07)
+
 
 1. Wikipedia bot
 2. background remover bot
