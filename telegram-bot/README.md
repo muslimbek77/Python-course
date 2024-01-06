@@ -103,3 +103,9 @@ Matnli qo'llanma: AIOgram frameworkida yozilgan telegram botni railway.app sayti
 19. music lyrics bot
 20. ttsuz bot
 21. dumaloq bot
+
+![image](https://github.com/muslimbek77/Python-course/assets/48023644/9635c0cd-608b-45a0-a039-11922d9124e0)
+![image](https://github.com/muslimbek77/Python-course/assets/48023644/5b453900-ce65-4677-8e8f-eb997746cd00)
+![image](https://github.com/muslimbek77/Python-course/assets/48023644/b4747461-df93-4e6e-8b78-6ae5d68936fb)
+
+
