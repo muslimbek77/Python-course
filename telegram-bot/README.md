@@ -82,6 +82,8 @@ MA'LUMOTLAR OMBORI. POSTGRESQL
 Matnli qo'llanma: AIOgram frameworkida yozilgan telegram botni railway.app saytiga tekinga joylash (https://telegra.ph/AIOgram-frameworkida-yozilgan-telegram-botni-railwayapp-saytiga-tekinga-joylash-12-07)
 
 
+
+https://www.geeksforgeeks.org/implementing-web-scraping-python-beautiful-soup/
 1. Wikipedia bot
 2. background remover bot
 3. Lotin-Krill bot
