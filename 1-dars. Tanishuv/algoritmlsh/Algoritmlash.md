@@ -47,3 +47,4 @@
 ![image](https://github.com/muslimbek77/Python-course/assets/48023644/f5fafc86-33b3-4b9a-b857-46346b99fae6)
 ![image](https://github.com/muslimbek77/Python-course/assets/48023644/9713e046-ba40-4415-93df-8b634411f6ea)
 ![Uploading image.png…]()
+![Uploading image.png…]()
