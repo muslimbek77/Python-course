@@ -25,7 +25,7 @@ async def command_start_handler(message: Message,state:FSMContext) -> None:
     text = f"Assalomu alaykum,{full_name} Sifat botiga hush kelibsiz\nRo'yhatdan o'tish uchun ismingizni kiriting!"
     await message.reply(text=text)
 
-@dp.message(Form.first_name)
+@dp.message(Form.first_name,F.text)
 async def get_first_name(message:Message,state:FSMContext):
 
     first_name = message.text
@@ -35,7 +35,7 @@ async def get_first_name(message:Message,state:FSMContext):
     text = f"Familyangizni kiriting!"
     await message.reply(text=text)
 
-@dp.message(Form.last_name)
+@dp.message(Form.last_name, F.text)
 async def get_last_name(message:Message,state:FSMContext):
 
     last_name = message.text
