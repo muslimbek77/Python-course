@@ -74,8 +74,8 @@ async def get_phone_number(message:Message,state:FSMContext):
         phone_number = message.text
         await state.update_data(phone_number=phone_number)
 
-        await state.set_state(Form.address)
-        text = f"Manzilingizni kiriting!"
+        await state.set_state(Form.home_number)
+        text = f"Uy raqamingizni kiriting!"
         await message.reply(text=text)
     #aks holda esa telefon nomerni to'g'ri kiritishini so'raymiz.
     else:
@@ -84,7 +84,21 @@ async def get_phone_number(message:Message,state:FSMContext):
 #Vazifa [photo,kurs_nomi,email....... va hokazo] 15 tacha filterdan foydalanib ro'yhatdan o'tish uchun, kiritilishi kerak bo'lgan ma'lumotlarga state tuzib kelasilar.
 #photo va telefon raqam to'g'ri kiritilganligini tekshirib keyin o'tkazuvchi stateni qilib ko'rsataman.
 
+@dp.message(Form.home_number,F.text)
+async def home_number_get(message:Message,state:FSMContext):
+    number = message.text
+    if number.isdigit():
+        await state.update_data(home_number=number)
 
+        await state.set_state(Form.address)
+        text = f"Manzilingizni kiriting!"
+        await message.reply(text=text)
+    else:
+        await message.reply("Noto'g'ri")
+
+@dp.message(Form.home_number)
+async def not_hom_number(message:Message,state:FSMContext):
+    await message.reply("Text ko'rinishida ma'lumot kiriting")
 
 
 
