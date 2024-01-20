@@ -20,7 +20,7 @@ bot = Bot(TOKEN, parse_mode=ParseMode.HTML)
 @dp.message(CommandStart())
 async def command_start_handler(message: Message,state:FSMContext) -> None:
     full_name = message.from_user.full_name
-    text = f"Assalomu alaykum,{full_name} Sifat botiga hush kelibsiz\nRo'yhatdan o'tish uchun ismingizni kiriting!"
+    text = f"Assalomu alaykum,{full_name} Sifat Maktablar botiga hush kelibsiz\nBu yerda maktablar haqida ma'lumot olishingiz mumkin!"
     await message.answer(text=text,reply_markup=menu_button)
 
 
