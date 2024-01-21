@@ -10,7 +10,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import ReplyKeyboardRemove, ReplyKeyboardMarkup, KeyboardButton
 from my_keyboards import menu_button
 ADMIN = 999588837 # Bu yerga id kiriting
-TOKEN = "6962596717:AAH8rK6QXNil4On5IeRbp5MfCSxIXf8cmbs" #Token kiriting
+TOKEN = "------------------------" #Token kiriting
 dp = Dispatcher()
 bot = Bot(TOKEN, parse_mode=ParseMode.HTML)
 
