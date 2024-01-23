@@ -8,9 +8,12 @@ from aiogram import F
 from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
 from aiogram.types import ReplyKeyboardRemove, ReplyKeyboardMarkup, KeyboardButton
-from my_keyboards import menu_button
+from my_keyboards import menu_button,auto_keyboard,builder3
+from ism_manosi import ismlar_manosi
+
 ADMIN = 999588837 # Bu yerga id kiriting
-TOKEN = "------------------------" #Token kiriting
+
+TOKEN = "6962596717:AAG3Z-CN6LlFHA_AhrS0LaaVhB4ZjuP--zw" #Token kiriting
 dp = Dispatcher()
 bot = Bot(TOKEN, parse_mode=ParseMode.HTML)
 
@@ -37,11 +40,37 @@ async def maktab_menu(message:Message,state:FSMContext):
          Maktab direktori:  Eshboev Mamat
 
 1981- yildan boshlab maktab direktori:  Tovboev Bosim  360 nafar o’quvchi 45 nafar o’qituvchi faoliyat ko’rsatgan."""
-    #maktab rasmini olish 
+    #maktab rasmini olish  #telegram-bot/8-9-dars/maktab.jpg
     photo = types.FSInputFile("telegram-bot/8-dars/maktab.jpg",filename="maktab.jpg")
     
     #maktab haqidagi ma'lumotni yuborish
     await message.answer_photo(photo=photo,caption=text)
+
+    
+@dp.message(F.text=="/tugma3")
+async def tugma_menu3(message:Message,state:FSMContext):
+        await message.answer(text="3-tugma",reply_markup=builder3.as_markup(resize_keyboard=True))
+
+
+
+@dp.message(Command(commands="names"))
+async def tugma_menu2(message:Message,state:FSMContext):
+        
+        await message.answer(text="2-tugma",reply_markup=auto_keyboard().as_markup(resize_keyboard=True))
+
+
+
+@dp.message(F.text)
+async def name(message:Message):
+    ism = message.text
+    natija = ismlar_manosi(ism=ism)
+
+    await message.answer(text=natija)
+
+
+
+
+
 
 
 async def main() -> None:
