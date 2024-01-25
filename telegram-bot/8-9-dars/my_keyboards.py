@@ -40,12 +40,27 @@ names = [
     "Sitora"
 ]
 
+eng_uz_colors = {
+    "red": "qizil",
+    "blue": "ko'k",
+    "green": "yashil",
+    "yellow": "sariq",
+    "orange": "orol",
+    "purple": "binafsha",
+    "pink": "pushti",
+    "brown": "jigarrang",
+    "gray": "kulrang",
+    "black": "qora",
+    "white": "oq"
+    # Add more colors as needed
+}
+
 def auto_keyboard():
     builder2 = ReplyKeyboardBuilder()
 
-    for name in names:
+    for color in eng_uz_colors.keys():
 
-        builder2.add(KeyboardButton(text=name))
+        builder2.add(KeyboardButton(text=color))
 
     builder2.adjust(2)
 

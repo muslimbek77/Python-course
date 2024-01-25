@@ -8,7 +8,7 @@ from aiogram import F
 from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
 from aiogram.types import ReplyKeyboardRemove, ReplyKeyboardMarkup, KeyboardButton
-from my_keyboards import menu_button,auto_keyboard,builder3
+from my_keyboards import menu_button,auto_keyboard,builder3,eng_uz_colors
 from ism_manosi import ismlar_manosi
 
 ADMIN = 999588837 # Bu yerga id kiriting
@@ -41,7 +41,7 @@ async def maktab_menu(message:Message,state:FSMContext):
 
 1981- yildan boshlab maktab direktori:  Tovboev Bosim  360 nafar o’quvchi 45 nafar o’qituvchi faoliyat ko’rsatgan."""
     #maktab rasmini olish  #telegram-bot/8-9-dars/maktab.jpg
-    photo = types.FSInputFile("telegram-bot/8-dars/maktab.jpg",filename="maktab.jpg")
+    photo = types.FSInputFile("telegram-bot/8-9-dars/maktab.jpg",filename="maktab.jpg")
     
     #maktab haqidagi ma'lumotni yuborish
     await message.answer_photo(photo=photo,caption=text)
@@ -53,11 +53,19 @@ async def tugma_menu3(message:Message,state:FSMContext):
 
 
 
-@dp.message(Command(commands="names"))
+@dp.message(Command(commands="colors"))
 async def tugma_menu2(message:Message,state:FSMContext):
         
-        await message.answer(text="2-tugma",reply_markup=auto_keyboard().as_markup(resize_keyboard=True))
+        await message.answer(text="My colors",reply_markup=auto_keyboard().as_markup(resize_keyboard=True))
 
+@dp.message(F.text)
+async def my_color(message:Message):
+     text = message.text
+     if text in eng_uz_colors.keys():
+          result = eng_uz_colors[text]
+          await message.answer(text=result)
+     else:
+          await message.answer(text="not")
 
 
 @dp.message(F.text)
