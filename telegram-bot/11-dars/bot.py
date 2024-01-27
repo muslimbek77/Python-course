@@ -7,8 +7,9 @@ from aiogram.filters import CommandStart,Command
 from aiogram import F
 from aiogram.types import Message,CallbackQuery
 from aiogram.fsm.context import FSMContext
-from inlinebutton import inline_menu,course_button #new
+from inlinebutton import inline_menu,course_button,ortga_button #new
 from aiogram.types import ReplyKeyboardRemove
+from keyboard_button import main_menu_button #new
 
 ADMIN = 999588837 # Bu yerga id kiriting
 
@@ -16,23 +17,26 @@ TOKEN = "6962596717:AAH6EuGxYtxyAidzaVqS1WGezffgktFfvQg" #Token kiriting
 dp = Dispatcher()
 bot = Bot(TOKEN, parse_mode=ParseMode.HTML)
 
+@dp.message(CommandStart())
+async def start_bot(message:Message):
+    await message.answer("Bizning botimizga hush kelibsiz!",reply_markup=main_menu_button)
+
 #new
-@dp.message(F.text=="/menu")
+@dp.message(F.text=="Menu")
 async def my_menu(message:Message):
     photo = "https://i.pinimg.com/736x/e5/94/02/e594028fbe30b388e76a49d4d19523a5.jpg"
     # await message.answer(text="Asosiy menu",reply_markup=inline_menu)
     await message.answer_photo(photo=photo,caption="Sifat o'quv markazi",reply_markup=inline_menu)
 
-@dp.message(F.text=="Frontend")
-async def frontend_course(message:Message):
-    await message.answer("Frontend kurslarimiz,.....",reply_markup=inline_menu)
+#ortga qaytarish
+@dp.callback_query(F.data=="back")
+async def ortga_funksiyasi(callback:CallbackQuery):
+    photo = "https://i.pinimg.com/736x/e5/94/02/e594028fbe30b388e76a49d4d19523a5.jpg"
+    
+    await callback.message.answer_photo(photo=photo,caption="Sifat o'quv markazi",reply_markup=inline_menu)
+    await callback.message.delete()
 
-# @dp.message(F.location)
-# async def my_location(message:Message):
-#     latitude = message.location.latitude
-#     longitude = message.location.longitude
-#     text = f"latitude={latitude},longitude={longitude}"
-#     await message.answer(text)
+
 
 @dp.callback_query(F.data=="address")
 async def my_address(callback:CallbackQuery):
@@ -45,7 +49,15 @@ async def my_address(callback:CallbackQuery):
 @dp.callback_query(F.data=="course")
 async def me_course(callback:CallbackQuery):
     
-    await callback.message.answer(text = "Sifat o'quv kurslari, Kurslardan birini tanlang",reply_markup=course_button)
+    await callback.message.edit_caption(caption = "Sifat o'quv kurslari, Kurslardan birini tanlang",reply_markup=course_button.as_markup())
+
+@dp.callback_query(F.data=="frontend")
+async def frontend_course(callback:CallbackQuery):
+    frontend_photo = "https://s.dou.ua/storage-files/how-to-front-end.jpg"
+    await callback.message.answer_photo(photo=frontend_photo,caption="Frontend haqida ma'lumot",reply_markup=ortga_button.as_markup())
+    await callback.message.delete()
+
+
 
 
 async def main() -> None:
