@@ -8,9 +8,9 @@ from aiogram import F
 from aiogram.types import Message,CallbackQuery
 from aiogram.fsm.context import FSMContext
 from inlinebutton import inline_menu,course_button,ortga_button #new
-from aiogram.types import ReplyKeyboardRemove
+from aiogram.types import ReplyKeyboardRemove,input_file
 from keyboard_button import main_menu_button #new
-
+from aiogram.types import FSInputFile
 ADMIN = 999588837 # Bu yerga id kiriting
 
 TOKEN = "6962596717:AAH6EuGxYtxyAidzaVqS1WGezffgktFfvQg" #Token kiriting
@@ -19,6 +19,7 @@ bot = Bot(TOKEN, parse_mode=ParseMode.HTML)
 
 @dp.message(CommandStart())
 async def start_bot(message:Message):
+    # await message.answer_video(video = FSInputFile("video.mp4"))
     await message.answer("Bizning botimizga hush kelibsiz!",reply_markup=main_menu_button)
 
 #new
