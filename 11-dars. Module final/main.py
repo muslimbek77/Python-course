@@ -56,9 +56,9 @@ royhat = ["Boborahim","Diyorbek","Fayozbek"]
 # print(list(range(10,100,12)))
 # print(natija)
 
-def addAB(a,b):
-    return a+b
+# def addAB(a,b):
+#     return a+b
 
-a= int(input("a="))
-b= int(input("b="))
-print(f"natija{addAB(a,b)}")
+# a= int(input("a="))
+# b= int(input("b="))
+# print(f"natija{addAB(a,b)}")
