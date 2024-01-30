@@ -11,12 +11,12 @@
 
 # print(math.ceil(2.1))
 
-import random as r
+# import random as r
 
 # random_son = r.randint(1,10)
 # print(random_son)
 
-royhat = ["Boborahim","Diyorbek","Fayozbek"]
+# royhat = ["Boborahim","Diyorbek","Fayozbek"]
 
 # navbatchi = r.choice(royhat)
 # result = r.choices(royhat, weights=[10,1,1],k=3)
