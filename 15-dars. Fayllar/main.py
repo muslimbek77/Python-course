@@ -45,7 +45,7 @@
 # with open(file="cat.jpg",mode="wb") as file:
 #     file.write(content)
 
-cat = open("cat.jpg","rb").read()
+# cat = open("cat.jpg","rb").read()
 
-with open(file="cat-copy.jpg",mode="wb") as file:
-    file.write(cat)
+# with open(file="cat-copy.jpg",mode="wb") as file:
+#     file.write(cat)
