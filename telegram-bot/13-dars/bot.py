@@ -6,7 +6,7 @@ from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart,Command
 from aiogram.types import Message,FSInputFile
 from aiogram import F
-
+from insta import insta_save
 
 
 TOKEN = "6962596717:AAH6EuGxYtxyAidzaVqS1WGezffgktFfvQg"
@@ -20,7 +20,14 @@ async def command_start_handler(message: Message) -> None:
 
 @dp.message(F.text.contains("instagram"))
 async def instagram_download(message:Message):
-    pass
+    link = message.text
+    result = insta_save(link)
+    if result[0]=="video":
+        await message.answer_video(video=result[1])
+    elif result[0]=="rasm":
+        await message.answer_photo(photo=result[1])
+    else:
+        await message.answer("Notog'ri link yubordingiz")
 
 async def main() -> None:
 
