@@ -3,8 +3,8 @@ import sqlite3
 connection = sqlite3.connect("pupil.db")
 
 command = """
-INSERT INTO pupils('first_name','last_name','class','age') 
-VALUES('Maqsud', 'Quvondiqov', '7-class', '13'),('Shuxrat',"Hamidov",'10-sinf',16); 
+INSERT INTO pupils('first_name','last_name','email','class','age') 
+VALUES('Maqsud', 'Quvondiqov','maqsud@mail.ru', '7-class', '13'),('Shuxrat',"Hamidov",'shuhrathamidov007@gmail.com','10-sinf',16); 
 
 """
 

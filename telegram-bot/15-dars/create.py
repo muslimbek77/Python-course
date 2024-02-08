@@ -6,10 +6,10 @@ command = """
 CREATE TABLE IF NOT EXISTS pupils (
     first_name TEXT,
     last_name TEXT,
+    email TEXT unique,
     class TEXT,
     age NUMBER
 ); 
-
 """
 cursor = connection.cursor()
 

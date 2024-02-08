@@ -8,13 +8,14 @@ from aiogram import F
 from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
 from states import Form
+import sqlite3
 
 #regular expression uchun
 import re # yangi qo'shildi e'tibor bering
 
 
 ADMIN = 999588837 # Bu yerga id kiriting
-TOKEN = "6962596717:AAH8rK6QXNil4On5IeRbp5MfCSxIXf8cmbs" #Token kiriting
+TOKEN = "6841416417:AAEGzxAPm0JHbr48dwYKy_Vw9C28coSeXYk" #Token kiriting
 dp = Dispatcher()
 bot = Bot(TOKEN, parse_mode=ParseMode.HTML)
 
@@ -116,6 +117,17 @@ async def get_address(message:Message,state:FSMContext):
     phone_number = data.get("phone_number")
     address = data.get("address")
     telegram_id = message.from_user.id
+    try:
+        connection = sqlite3.connect("sqlite.db")
+        cursor = connection.cursor()
+        command = f"""
+            INSERT INTO USERS('first_name','last_name','phone_number','telegram_id')
+            VALUES('{first_name}','{last_name}','{phone_number}','{telegram_id}');
+        """
+        cursor.execute(command)
+        connection.commit()
+    except:
+        pass
     
     text = f"<b>Ariza</b>\nIsmi:  {first_name}\nFamilyasi:  {last_name}\nTel:  {phone_number}\nManzil:  {address}"
     
@@ -124,7 +136,6 @@ async def get_address(message:Message,state:FSMContext):
     await bot.send_photo(ADMIN,photo=my_photo,caption=text)
     # print(first_name,last_name,phone_number,address)
     
-
     await state.clear()
     text = f"Siz muvaffaqiyatli tarzda ro'yhatdan o'tdingiz🎉"
     await message.reply(text=text)
