@@ -34,19 +34,19 @@ if __name__ == "__main__":
 
 
 
-# # import requests
+# import requests
 
-# # response = requests.get("https://api.telegram.org/bot6841416417:AAEGzxAPm0JHbr48dwYKy_Vw9C28coSeXYk/getMe")
+# response = requests.get("https://api.telegram.org/bot6841416417:AAEGzxAPm0JHbr48dwYKy_Vw9C28coSeXYk/getMe")
 
-# # if response.status_code==200:
-# #     print(response.content.decode())
+# if response.status_code==200:
+#     print(response.content.decode())
 
-# # message = input("xabar kiriting: ")
+# message = input("xabar kiriting: ")
 
-# # url = f"https://api.telegram.org/bot6841416417:AAEGzxAPm0JHbr48dwYKy_Vw9C28coSeXYk/sendMessage?chat_id=-1002022943392&text={message}"
+# url = f"https://api.telegram.org/bot6841416417:AAEGzxAPm0JHbr48dwYKy_Vw9C28coSeXYk/sendMessage?chat_id=-1002022943392&text={message}"
 
 
-# # requests.get(url)
+# requests.get(url)
 
 # #rasm yuborish
 # # API_KEY = "------"
