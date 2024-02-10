@@ -39,6 +39,20 @@ async def command_start_handler(message: Message,state:FSMContext) -> None:
         text = f"Assalomu alaykum,{full_name} Sifat botiga hush kelibsiz\nRo'yhatdan o'tish uchun ismingizni kiriting!"
         await message.reply(text=text)
 
+
+#/count /allusers
+@dp.message(F.text=="/count")
+async def count_users(message:Message):
+    connection = sqlite3.connect("sqlite.db")
+    cursor = connection.cursor()
+    command = """SELECT count(*) FROM USERS"""
+    cursor.execute(command)
+    count = cursor.fetchone()[0]
+    
+    await message.answer(text=f"Bizning botimizda {count}ta foydalanuvchi bor!")
+
+
+
 @dp.message(Form.first_name,F.text)
 async def get_first_name(message:Message,state:FSMContext):
 
