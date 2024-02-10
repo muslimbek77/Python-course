@@ -51,6 +51,21 @@ async def count_users(message:Message):
     
     await message.answer(text=f"Bizning botimizda {count}ta foydalanuvchi bor!")
 
+@dp.message(F.text=="/allusers")
+async def all_users(message:Message):
+    connection = sqlite3.connect("sqlite.db")
+    cursor = connection.cursor()
+    command = """SELECT first_name,last_name,phone_number FROM USERS"""
+    cursor.execute(command)
+    users = cursor.fetchall()
+    text ="Bizning foydalanuvchilar:\n"
+    for index,data in enumerate(users):
+        text += f"{index+1}. Ismi:{data[0]}\n{index+1}. Familyasi:{data[1]}\n{index+1}. Tel:{data[2]}\n\n"
+
+
+    
+    await message.answer(text=text)
+
 
 
 @dp.message(Form.first_name,F.text)
