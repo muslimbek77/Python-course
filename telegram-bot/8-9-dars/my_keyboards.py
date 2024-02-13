@@ -5,22 +5,38 @@ from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
 
 #button yaratish 1-usul
-menu_button = ReplyKeyboardMarkup(
-    keyboard=[
-        [
-            KeyboardButton(text="Maktab 🎒"),
-            
-            #5ta maktab qo'shishilar kerak misol:1-Maktab, 4-Maktab
-        ],
+# menu_button = ReplyKeyboardMarkup(
+#     keyboard=[
+#         [
+#             KeyboardButton(text="Maktab"),
+#             #5ta maktab qo'shishilar kerak misol:1-Maktab, 4-Maktab
+#         ],
         
 
-        [   #Bu tugmani bosganda o'ziz xaqizda ma'lumot chiqsin
-            KeyboardButton(text="Biz haqimizda👨🏻‍💻"),
-        ],
+#         [   #Bu tugmani bosganda o'ziz xaqizda ma'lumot chiqsin
+#             KeyboardButton(text="Biz haqimizda👨🏻‍💻"),
+            
+#         ],
+#     ],
+#    resize_keyboard=True,
+#    input_field_placeholder="Menudan birini tanlang"
+# )
+
+menu_button = ReplyKeyboardMarkup(
+    keyboard=[
+        [KeyboardButton(text="Fayozbek"),KeyboardButton(text="1"),KeyboardButton(text="1")],
+        [KeyboardButton(text="2"),KeyboardButton(text="2")],
+
+        [KeyboardButton(text="3"),KeyboardButton(text="3")],
+
+
     ],
-    resize_keyboard=True,
-    input_field_placeholder="Tugmalardan birini tanlang"
+   resize_keyboard=True,
+   input_field_placeholder="Menudan birini tanlang"
 )
+
+
+
 
 #button yaratish 2-usul
 names = [

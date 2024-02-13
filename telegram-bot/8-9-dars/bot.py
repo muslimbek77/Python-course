@@ -13,23 +13,19 @@ from ism_manosi import ismlar_manosi
 
 ADMIN = 999588837 # Bu yerga id kiriting
 
-TOKEN = "6962596717:AAG3Z-CN6LlFHA_AhrS0LaaVhB4ZjuP--zw" #Token kiriting
+TOKEN = "6841416417:AAEGzxAPm0JHbr48dwYKy_Vw9C28coSeXYk" #Token kiriting
 dp = Dispatcher()
 bot = Bot(TOKEN, parse_mode=ParseMode.HTML)
 
-
-
-
 @dp.message(CommandStart())
-async def command_start_handler(message: Message,state:FSMContext) -> None:
+async def command_start_handler(message: Message) -> None:
     full_name = message.from_user.full_name
     text = f"Assalomu alaykum,{full_name} Sifat Maktablar botiga hush kelibsiz\nBu yerda maktablar haqida ma'lumot olishingiz mumkin!"
     await message.answer(text=text,reply_markup=menu_button)
 
-
 #maktab tugmasi bosilganda yuboriladigon habar
 @dp.message(F.text=="Maktab 🎒")
-async def maktab_menu(message:Message,state:FSMContext):
+async def maktab_menu(message:Message):
     #maktabingiz haqida ma'lumot
     text = """Maktab 1978- yil Zomin tumanga qarashli 39-maktab ochilgan. Maktab moslashtirilgan binoda joylashgan. Unga 130 ta 15 ta o’qituvchi maktab direktorii Nurmatov I.
 
@@ -41,7 +37,7 @@ async def maktab_menu(message:Message,state:FSMContext):
 
 1981- yildan boshlab maktab direktori:  Tovboev Bosim  360 nafar o’quvchi 45 nafar o’qituvchi faoliyat ko’rsatgan."""
     #maktab rasmini olish  #telegram-bot/8-9-dars/maktab.jpg
-    photo = types.FSInputFile("telegram-bot/8-9-dars/maktab.jpg",filename="maktab.jpg")
+    photo = types.FSInputFile("telegram-bot/8-9-dars/maktab.jpg",filename="Fayozbek.jpg")
     
     #maktab haqidagi ma'lumotni yuborish
     await message.answer_photo(photo=photo,caption=text)
