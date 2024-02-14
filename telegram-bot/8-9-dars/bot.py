@@ -23,6 +23,15 @@ async def command_start_handler(message: Message) -> None:
     text = f"Assalomu alaykum,{full_name} Sifat Maktablar botiga hush kelibsiz\nBu yerda maktablar haqida ma'lumot olishingiz mumkin!"
     await message.answer(text=text,reply_markup=menu_button)
 
+
+@dp.message(F.text)
+async def ism_funksiyasi(message:Message):
+     ism = message.text
+     natija = ismlar_manosi(ism)
+
+     await message.answer(text=natija)
+
+
 #maktab tugmasi bosilganda yuboriladigon habar
 @dp.message(F.text=="Maktab 🎒")
 async def maktab_menu(message:Message):
