@@ -5,6 +5,6 @@ class Form(StatesGroup):
     last_name = State()
     phone_number = State()
     address = State()
-    photo = State() #yangi qo'shildi
-    home_number = State()
+    # photo = State() #yangi qo'shildi
+    # home_number = State()
     

@@ -6,8 +6,8 @@ from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart,Command
 from aiogram import F
 from aiogram.types import Message
-from aiogram.fsm.context import FSMContext
-from states import Form
+from aiogram.fsm.context import FSMContext #new
+from states import Form #new
 
 #regular expression uchun
 import re # yangi qo'shildi e'tibor bering
