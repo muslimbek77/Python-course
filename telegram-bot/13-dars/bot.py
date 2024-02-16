@@ -14,7 +14,7 @@ dp = Dispatcher()
 
 @dp.message(CommandStart())
 async def command_start_handler(message: Message) -> None:
-    await message.answer(f"Salom, Botimiz sizga youtubdan video olib beradi.\nBotdan foydalanish uchun link yuboring")
+    await message.answer(f"Salom, Botimiz sizga instagramdan video olib beradi.\nBotdan foydalanish uchun link yuboring")
 
 
 

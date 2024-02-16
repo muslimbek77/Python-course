@@ -6,10 +6,12 @@ from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart,Command
 from aiogram import F
 from aiogram.types import Message
-
+from aiogram.client.session.aiohttp import AiohttpSession #new
 from wiki import wiki_malumot
 
-TOKEN = "6962596717:AAGws9oAuKEpz9m4zwp3K_Y7CnAJbV4_L1c"
+session = AiohttpSession(proxy='http://proxy.server:3128') #new
+
+TOKEN = "6962596717:AAH6EuGxYtxyAidzaVqS1WGezffgktFfvQg"
 dp = Dispatcher()
 
 @dp.message(CommandStart())
@@ -26,7 +28,7 @@ async def name(message:Message):
     await message.answer(text=natija)
 
 async def main() -> None:
-    bot = Bot(TOKEN, parse_mode=ParseMode.HTML)
+    bot = Bot(TOKEN, parse_mode=ParseMode.HTML,session=session) #new
     await dp.start_polling(bot)
 
 
