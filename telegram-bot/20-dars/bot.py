@@ -8,13 +8,21 @@ from aiogram import F
 from aiogram.types import Message
 from data import config
 from filters.admin import IsBotAdminFilter 
-
+from filters.check_sub_channel import IsCheckSubChannels
 
 ADMINS = config.ADMINS
 TOKEN = config.BOT_TOKEN
 
 dp = Dispatcher()
 
+#forward qilingan xabarlar chat id sini oladi
+# @dp.message(F.forward_from_chat)
+# async def check_channel_id(message:Message):
+#     await message.answer(f"CHannel id: {message.forward_from_chat.id}")
+
+@dp.message(IsCheckSubChannels())
+async def is_check_sub_channel(message:Message):
+    await message.answer(text="Botdan foydalanishingiz mumkin")
 
 
 

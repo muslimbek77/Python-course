@@ -1,0 +1,8 @@
+Ну я вообще вот так проблему решил:
+
+
+from aiogram.client.session.aiohttp import AiohttpSession
+
+session = AiohttpSession(proxy='http://proxy.server:3128')
+
+bot = Bot(token=..., session=session)
