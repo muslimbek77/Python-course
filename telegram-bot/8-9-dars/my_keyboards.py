@@ -98,3 +98,4 @@ builder3.row(KeyboardButton(
     text="Viktorina yaratish",
     request_poll=KeyboardButtonPollType(type="quiz"))
 )
+button3 = builder3.as_markup(resize_keyboard=True)
