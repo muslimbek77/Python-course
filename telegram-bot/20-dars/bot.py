@@ -20,9 +20,18 @@ dp = Dispatcher()
 # async def check_channel_id(message:Message):
 #     await message.answer(f"CHannel id: {message.forward_from_chat.id}")
 
-@dp.message(IsCheckSubChannels())
-async def is_check_sub_channel(message:Message):
-    await message.answer(text="Botdan foydalanishingiz mumkin")
+# @dp.message(IsCheckSubChannels())
+# async def is_check_sub_channel(message:Message):
+#     await message.answer(text="Botdan foydalanishingiz mumkin")
+
+@dp.message()
+async def test(message:Message):
+    text = f"""
+chat type: {message.chat.type}\n
+chat id: {message.chat.id}\n
+chat name: {message.chat.full_name}
+"""
+    await message.answer(text=text)
 
 
 
@@ -41,6 +50,7 @@ async def admin_funksiyasi(message:Message):
 
 
 #bot ishga tushganini xabarini yuborish
+@dp.startup()
 async def on_startup_notify(bot: Bot):
     for admin in ADMINS:
         try:
@@ -49,6 +59,7 @@ async def on_startup_notify(bot: Bot):
             logging.exception(err)
 
 #bot ishga tushganini xabarini yuborish
+@dp.shutdown()
 async def off_startup_notify(bot: Bot):
     for admin in ADMINS:
         try:
@@ -59,11 +70,9 @@ async def off_startup_notify(bot: Bot):
 
 async def main() -> None:
     bot = Bot(TOKEN, parse_mode=ParseMode.HTML)
-    await on_startup_notify(bot)
     await dp.start_polling(bot)
-    await off_startup_notify(bot)
-    
-    
+
+
 
 
 if __name__ == "__main__":
