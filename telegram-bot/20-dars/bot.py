@@ -9,7 +9,6 @@ from aiogram.types import Message, ChatPermissions
 from data import config
 from filters.admin import IsBotAdminFilter 
 from filters.check_sub_channel import IsCheckSubChannels
-from datetime import timedelta
 ADMINS = config.ADMINS
 TOKEN = config.BOT_TOKEN
 
@@ -35,8 +34,8 @@ dp = Dispatcher()
 
 @dp.message(F.new_chat_member)
 async def new_member(message:Message):
-    # print(message.new_chat_member)
-    await message.answer(f"{message.new_chat_member.full_name} Guruhga xush kelibsiz!")
+    user = message.new_chat_member.get("first_name")
+    await message.answer(f"{user} Guruhga xush kelibsiz!")
     await message.delete()
 
 @dp.message(F.left_chat_member)
@@ -58,12 +57,15 @@ async def unban_user(message:Message):
     await message.chat.unban_sender_chat(user_id)
     await message.answer(f"{message.reply_to_message.from_user.first_name} guruhga qaytishingiz mumkin.")
 
+from time import time
 @dp.message(and_f(F.reply_to_message,F.text=="/mute"))
 async def mute_user(message:Message):
     user_id =  message.reply_to_message.from_user.id
     permission = ChatPermissions(can_send_messages=False)
-    await message.chat.restrict(user_id=user_id,permissions=permission)
-    await message.answer(f"{message.reply_to_message.from_user.first_name} guruhga yoza olmaysiz")
+
+    until_date = int(time()) + 60 # 1minut guruhga yoza olmaydi
+    await message.chat.restrict(user_id=user_id,permissions=permission,until_date=until_date)
+    await message.answer(f"{message.reply_to_message.from_user.first_name} 1 minutga blocklandingiz")
 
 @dp.message(and_f(F.reply_to_message,F.text=="/unmute"))
 async def unmute_user(message:Message):
@@ -72,11 +74,24 @@ async def unmute_user(message:Message):
     await message.chat.restrict(user_id=user_id,permissions=permission)
     await message.answer(f"{message.reply_to_message.from_user.first_name} guruhga yoza olasiz")
 
+
+from time import time
 xaqoratli_sozlar = {"tentak","jinni"}
-@dp.message(and_f(F.chat.func(lambda chat: chat.type == "supergroup"),F.text.in_(xaqoratli_sozlar)))
+@dp.message(and_f(F.chat.func(lambda chat: chat.type == "supergroup"),F.text ))
 async def tozalash(message:Message):
-    await message.answer(text=f"{message.from_user.mention_html()} guruhda so'kinmang")
-    await message.delete() 
+    text = message.text
+    print(text)
+    for soz in xaqoratli_sozlar:
+        print(soz,text.lower().find(soz))
+        if text.lower().find(soz)!=-1 :
+            user_id =  message.from_user.id
+            until_date = int(time()) + 60 # 1minut guruhga yoza olmaydi
+            permission = ChatPermissions(can_send_messages=False)
+            await message.chat.restrict(user_id=user_id,permissions=permission,until_date=until_date)
+            await message.answer(text=f"{message.from_user.mention_html()} guruhda so'kinganingiz uchun 1 minutga blokga tushdingiz")
+            await message.delete() 
+            break
+    
 
 
 
